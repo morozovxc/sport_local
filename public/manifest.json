@@ -1,16 +1,9 @@
 {
     "name": "Imar",
     "short_name": "Imar",
-    "start_url": "/",
+    "theme_color": "#2d1111",
+    "background_color": "#ff0000",
     "display": "standalone",
-    "background_color": "#90cdf4",
-    "theme_color": "#90cdf4",
-    "orientation": "portrait-primary",
-    "icons": [
-        {
-            "src": "../icon/icon.jpg",
-            "type": "image/jpg",
-            "sizes": "512x512"
-        }
-    ]
+    "scope": "/",
+    "start_url": "/"
 }
