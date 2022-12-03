@@ -10,10 +10,6 @@ export default function setJudge() {
     const handleChangeName = (event) => setJudge(event.target.value)
     const handleChangeNumber = (event) => setNumber(event.target.value)
     return (
-    <>
-        <Head>
-            <link rel="manifest" href="../manifest.json" />
-        </Head>
         <Stack spacing={2}
             left={0} right={0} top={"40%"} m={"auto"}
             maxWidth={300}
@@ -27,6 +23,5 @@ export default function setJudge() {
                 onClick={() => router.push({pathname:"/judge/battle", query: { name: judge, id: number }})}
             >Далее</Button>
         </Stack>
-    </>
     )
 }
