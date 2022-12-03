@@ -1,7 +1,4 @@
 {
-  "name": "sport",
-  "version": "0.1.0",
-  "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -9,8 +6,13 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "next": "13.0.5",
-    "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "@mui/icons-material": "^5.10.16",
+    "@mui/material": "^5.10.16",
+    "install": "^0.13.0",
+    "next": "^13.0.5",
+    "npm": "^9.1.2",
+    "react": "^18.2.0"
   }
 }
