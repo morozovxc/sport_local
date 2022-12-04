@@ -15,7 +15,7 @@ const StyledButton = styled(Button)(({ theme }) => ({
 export default function PunchScore( {buttons, score, setScore} ){
     return (
         <Stack spacing={1} alignItems={"center"}>
-            <Box width={"100%"} maxWidth="163px" sx={{ background: "#9E9E9E", borderRadius: 30}}>
+            <Box  width={"100%"} maxWidth="136px" sx={{ background: "#9E9E9E", borderRadius: 2}}>
                 {!!score ? score : "Нет"}
             </Box>
             <Stack direction="row" spacing={1}>

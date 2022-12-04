@@ -1,19 +1,19 @@
 import { useState } from 'react';
-import { Stack, Box, Typography } from '@mui/material';
-import PunchScore from "../../components/PunchScore"
-import CastScore from "../../components/CastScore"
+import { Stack, Box, Typography, Button } from '@mui/material';
+import Warnings from "../../components/Warnings"
+import Punches from "../../components/Punches"
+import Errors from "../../components/Errors"
 import { useRouter } from 'next/router'
 
-
 export default function Battle() {
-    const router = useRouter()
-    const { name, id } = router.query
-    
-    const [ punchRed, setPunchRed ] = useState("")
-    const [ punchBlue, setPunchBlue ] = useState("")
-
-    const [ castRed, setCastRed] = useState("")
-    const [ castBlue, setCastBlue] = useState("")
+    const router = useRouter();
+    const { name, id } = router.query;
+    const [ punchRed, setPunchRed ] = useState("");
+    const [ punchBlue, setPunchBlue ] = useState("");
+    const [ castRed, setCastRed] = useState("");
+    const [ castBlue, setCastBlue] = useState("");
+    const [ warns, setWarns] = useState([false, false, false, false]);
+    const [ errors, setErrors ] = useState([false, false, false, false]);
 
     return (
         <Stack alignItems="center">
@@ -23,38 +23,25 @@ export default function Battle() {
             <Stack direction="row" justifyContent="center" height={30} width={"60%"} sx={{background: "#9E9E9E", borderRadius: "0px 0px 30px 30px"}}>
                 <Typography>Поединок: №{id}</Typography>
             </Stack>
-            <Stack pt={8}>
-                <Stack textAlign="center">
-                    <Stack direction="row" spacing={6}>
-                        <Stack spacing={10}>
-                            <Typography sx={{color: "red"}}>Красный</Typography>
-                            <Stack spacing={10}>
-                                <Stack>
-                                    <Typography sx={{color: "black"}}>Удары</Typography>
-                                    <PunchScore buttons={["1", "2", "4"]} score={punchRed} setScore={setPunchRed}/>
-                                </Stack>
-                                <Stack>
-                                    <Typography sx={{color: "black"}}>Броски</Typography>
-                                    <CastScore buttons={["1", "2", "[1]", "(1)"]} score={castRed} setScore={setCastRed}/>
-                                </Stack>
-                            </Stack>
-                        </Stack>
-                        
-                        <Stack spacing={10}>
-                            <Typography sx={{color: "blue"}}>Синий</Typography>
-                            <Stack spacing={10}>
-                                <Stack>
-                                    <Typography sx={{color: "black"}}>Удары</Typography>
-                                    <PunchScore buttons={["1", "2", "4"]} score={punchBlue} setScore={setPunchBlue}/>
-                                </Stack>
-                                <Stack>
-                                    <Typography sx={{color: "black"}}>Броски</Typography>
-                                    <CastScore buttons={["1", "2", "[1]", "(1)"]} score={castBlue} setScore={setCastBlue}/>
-                                </Stack>
-                            </Stack>
-                        </Stack>
-                    </Stack>
-                </Stack>
+            <Stack pt={2} textAlign="center" direction={"row"} spacing={1}>
+                <Punches name={"Красный"} color="red" score={punchRed} setScore={setPunchRed} cast={castRed} setCast={setCastRed} />
+                <Punches name={"Синий"} color="blue" score={punchBlue} setScore={setPunchBlue} cast={castBlue} setCast={setCastBlue} />
+            </Stack>
+            <Stack width={"100%"} pt={2} spacing={2}>
+                <Warnings warns={warns} setWarns={setWarns} />
+                <Errors errors={errors} setErrors={setErrors}/>
+                <Button variant="outlined" onClick={() => router.push({
+                    pathname: "/judge/winner",
+                    query: {
+                        punchRed: punchRed,
+                        punchBlue: punchBlue,
+                        castRed: castRed,
+                        castBlue: castBlue,
+                        warns: warns,
+                        errors: errors
+                    } 
+                })}
+                >Далее</Button>
             </Stack>
         </Stack>
     )

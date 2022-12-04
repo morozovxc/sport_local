@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { TextField, Button, Stack } from '@mui/material';
 import { useRouter } from 'next/router'
-import Head from "next/head"
 
 export default function setJudge() {
     const router = useRouter();
