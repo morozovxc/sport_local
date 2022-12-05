@@ -16,33 +16,34 @@ export default function Battle() {
     const [ errors, setErrors ] = useState([false, false, false, false]);
 
     return (
-        <Stack alignItems="center">
-            <Box textAlign="center" height={30} width={"100%"} sx={{background: "#9E9E9E"}}>
-                <Typography pt={0.5} sx={{fontWeight: 750}}>Судья: {name}</Typography>
-            </Box>
-            <Stack direction="row" justifyContent="center" height={30} width={"60%"} sx={{background: "#9E9E9E", borderRadius: "0px 0px 30px 30px"}}>
-                <Typography>Поединок: №{id}</Typography>
+        <Stack>
+            <Stack 
+                left={0} right={0}
+                position="absolute"
+                textAlign="center"
+            >
+                <Stack spacing={8} alignItems="center">
+                    <Box height="32px" width={"100%"} sx={{background: "#3A3A3A"}}>
+                        <Typography m={0.5} fontWeight={600}>Судья: {name}</Typography>
+                    </Box>
+                    <Box height="32px" width={"40%"} sx={{background: "#3A3A3A", borderRadius: "0px 10px 0px 10px"}}>
+                        <Typography m={0.5} >Поединок: №{id}</Typography>
+                    </Box>
+                </Stack>
             </Stack>
-            <Stack pt={2} textAlign="center" direction={"row"} spacing={1}>
-                <Punches name={"Красный"} color="red" score={punchRed} setScore={setPunchRed} cast={castRed} setCast={setCastRed} />
-                <Punches name={"Синий"} color="blue" score={punchBlue} setScore={setPunchBlue} cast={castBlue} setCast={setCastBlue} />
-            </Stack>
-            <Stack width={"100%"} pt={2} spacing={2}>
-                <Warnings warns={warns} setWarns={setWarns} />
-                <Errors errors={errors} setErrors={setErrors}/>
-                <Button variant="outlined" onClick={() => router.push({
-                    pathname: "/judge/winner",
-                    query: {
-                        punchRed: punchRed,
-                        punchBlue: punchBlue,
-                        castRed: castRed,
-                        castBlue: castBlue,
-                        warns: warns,
-                        errors: errors
-                    } 
-                })}
-                >Далее</Button>
+
+            <Stack p={20} direction="row" justifyContent={"center"} spacing={5}>
+                <Stack sx={{background: "#DABABA"}}>
+                    <Punches color="red" score={punchRed} setScore={setPunchRed} cast={castRed} setCast={setCastRed} />
+                </Stack>
+                <Stack sx={{background: "#7A80B4"}}>
+                    <Punches color="blue" score={punchBlue} setScore={setPunchBlue} cast={castBlue} setCast={setCastBlue} /> 
+                </Stack>
             </Stack>
         </Stack>
     )
 }
+
+/*
+    
+*/  

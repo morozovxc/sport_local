@@ -12,11 +12,11 @@ const StyledButton = styled(Button)(({ theme }) => ({
     padding: 0
 }));
 
-export default function PunchScore( {buttons, score, setScore} ){
+export default function PunchScore( {buttons, score, setScore, name} ){
     return (
-        <Stack spacing={1} alignItems={"center"}>
+        <Stack spacing={1} textAlign={"center"}>
             <Box  width={"100%"} maxWidth="136px" sx={{ background: "#9E9E9E", borderRadius: 2}}>
-                {!!score ? score : "Нет"}
+                {!!score ? score : name}
             </Box>
             <Stack direction="row" spacing={1}>
                 <Stack spacing={1}>

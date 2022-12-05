@@ -24,11 +24,11 @@ function DeleteLastValue(score, setScore) {
     setScore(score.slice(0, -1))
 }
 
-export default function CastScore( {buttons, score, setScore} ){
+export default function CastScore( {buttons, score, setScore, name} ){
     return (
-        <Stack spacing={1} alignItems={"center"}>
+        <Stack spacing={1} textAlign={"center"}>
             <Box width={"100%"} minWidth="136px" sx={{ background: "#9E9E9E", borderRadius: 2}}>
-                {!!score ? score : "Нет"}
+                {!!score ? score : name}
             </Box>
             <Stack direction="row" spacing={1}>
                 <Stack spacing={1}>

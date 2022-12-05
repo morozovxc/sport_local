@@ -1,6 +1,31 @@
 import { useState } from 'react';
-import { TextField, Button, Stack } from '@mui/material';
+import { TextField, Box, Button, Stack, Typography } from '@mui/material';
 import { useRouter } from 'next/router'
+import { styled } from '@mui/material/styles';
+
+const ColorField = styled(TextField)({
+    color: "white",
+    border: "2px",
+    borderColor: 'black',
+    backgroundColor: "#3A3A3A",
+    borderRadius: 5,
+    '& .MuiOutlinedInput-root': {
+        '&.Mui-focused fieldset': {
+            color: "white",
+            borderColor: 'black',
+        },
+    },
+});
+
+const ColorButton = styled(Button)({
+    color: "black",
+    border: "1px",
+    backgroundColor: "#FFFFFF",
+    '&:hover': {
+        color: "#FFFFFF",
+        backgroundColor: "#3A3A3A",
+    },
+});
 
 export default function setJudge() {
     const router = useRouter();
@@ -9,18 +34,21 @@ export default function setJudge() {
     const handleChangeName = (event) => setJudge(event.target.value)
     const handleChangeNumber = (event) => setNumber(event.target.value)
     return (
-        <Stack spacing={2}
-            left={0} right={0} top={"40%"} m={"auto"}
-            maxWidth={300}
-            position="absolute"
-        >
-            <TextField label="Фамилия" variant="filled" onChange={handleChangeName} />
-            <TextField label="Номер боя" variant="filled" onChange={handleChangeNumber} />
-            <Button
-                sx={{borderRadius: 30, background: "grey"}}
-                variant="contained"
-                onClick={() => router.push({pathname:"/judge/battle", query: { name: judge, id: number }})}
-            >Далее</Button>
-        </Stack>
+        <>
+            <Box textAlign="center" sx={{background: "#3A3A3A"}}>
+                <Typography fontWeight={550} fontSize={18}>Судейская записка</Typography>
+            </Box>
+            <Stack spacing={2}
+                left={0} right={0} top={"35%"} m={"auto"}
+                maxWidth={300}
+                position="absolute"
+            >
+                <ColorField placeholder="ФИО" onChange={handleChangeName} />
+                <ColorField placeholder="Номер боя" onChange={handleChangeNumber} />
+                <ColorButton
+                    onClick={() => router.push({pathname:"/judge/battle", query: { name: judge, id: number }})}
+                >Далее</ColorButton>
+            </Stack>
+        </>
     )
 }
