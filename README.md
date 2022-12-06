@@ -35,3 +35,23 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 
 
+<Stack pt={2} textAlign="center" direction={"row"} spacing={1}>
+                <Punches name={"Красный"} color="red" score={punchRed} setScore={setPunchRed} cast={castRed} setCast={setCastRed} />
+                <Punches name={"Синий"} color="blue" score={punchBlue} setScore={setPunchBlue} cast={castBlue} setCast={setCastBlue} />
+            </Stack>
+            <Stack width={"100%"} pt={2} spacing={2}>
+                <Warnings warns={warns} setWarns={setWarns} />
+                <Errors errors={errors} setErrors={setErrors}/>
+                <Button variant="outlined" onClick={() => router.push({
+                    pathname: "/judge/winner",
+                    query: {
+                        punchRed: punchRed,
+                        punchBlue: punchBlue,
+                        castRed: castRed,
+                        castBlue: castBlue,
+                        warns: warns,
+                        errors: errors
+                    } 
+                })}
+                >Далее</Button>
+            </Stack>
