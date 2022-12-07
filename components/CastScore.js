@@ -27,7 +27,7 @@ function DeleteLastValue(score, setScore) {
 export default function CastScore( {buttons, score, setScore, name, color} ){
     return (
         <Stack spacing={1} textAlign={"center"}>
-            <Box sx={{ background: color, color: "black",borderRadius: 2, boxShadow: "0px 2px 0px 1px rgba(0, 0, 0, 0.2)"}}>
+            <Box sx={{ background: color, color: "black", borderRadius: 2, boxShadow: "0px 2px 0px 1px rgba(0, 0, 0, 0.2)"}}>
                 <Typography m={0.2}>{!!score ? score : name}</Typography>
             </Box>
             <Stack direction="row" spacing={1}>
